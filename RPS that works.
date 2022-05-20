@@ -1,0 +1,49 @@
+var getUserChoice = function (userInput){
+userInput = userInput.toLowerCase();  
+    // if( userInput ==='bomb'){
+        // console.log("You Win this match and every match for all eternity! Bomb, you clever bastard why didn't I think of that?")
+    // }
+    if(userInput ==='rock' || userInput ==='paper' || userInput ==='scissors' ||userInput==='bomb'){
+        return userInput;
+    }else {
+        console.log('You did not select rock, paper or scissors, please try again.') 
+    }
+}
+
+var getComputerChoice = function(){
+    var randomNumber = Math.floor(Math.random() *3);
+    // console.log(randomNumber)
+    if (randomNumber === 0){
+        return 'rock'
+    }else if (randomNumber===1){
+        return 'paper'
+    }else if (randomNumber ===2){
+        return 'scissors'
+    }
+};
+
+var determineWinner = function( userChoice , computerChoice ){
+    if(userChoice ===computerChoice){
+        return "The match resulted in a tie, you'll get them next time"
+    }else if(userChoice === 'rock' && computerChoice === 'paper'){
+        return "You lose, paper beats rock"
+    }else if(userChoice ==='rock' && computerChoice ==='scissors'){
+        return "You win! rock beats scissors!"
+    }else if(userChoice==='scissors' && computerChoice ==='rock'){
+        return "You lose, rock beats paper"
+    }else if(userChoice === 'scissors' && computerChoice === 'paper'){
+        return "You win! scissors beats paper!"
+    }else if(userChoice ==='paper' && computerChoice ==='scissors'){
+        return "You lose, scissors beats paper"
+    }else if(userChoice ==='paper' && computerChoice ==='rock'){
+        return "You win! paper beats rock!"
+    }else if(userChoice ==='bomb'){
+        return "You win this match and every other match for all eternity."
+    }
+};
+
+var userChoice = getUserChoice('scissors')
+var computerChoice = getComputerChoice()
+
+var winnerText = determineWinner(userChoice, computerChoice)
+console.log(winnerText)
